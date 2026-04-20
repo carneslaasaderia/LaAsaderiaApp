@@ -1,22 +1,257 @@
 [
  {
-   "A": "NOMBRE",
-   "B": "CODIGO",
-   "C": "PRECIO"
+   "A": "ABASTERO CAT V NAC",
+   "B": 16,
+   "C": 11990
  },
  {
-   "A": "ASIENTO",
-   "B": "4",
-   "C": "15990"
+   "A": "ALETILLA CAT V NAC",
+   "B": 29,
+   "C": 0
  },
  {
-   "A": "MOLIDA CORRIENTE",
-   "B": "34",
-   "C": "8990"
+   "A": "ASADO CARNICERO CAT V NAC",
+   "B": 14,
+   "C": 11990
  },
  {
-   "A": "MOLIDA ESPECIAL",
-   "B": "35",
-   "C": "13990"
+   "A": "ASADO TIRA CAT V NAC",
+   "B": 25,
+   "C": 11990
+ },
+ {
+   "A": "ASIENTO CAT V NAC",
+   "B": 4,
+   "C": 13990
+ },
+ {
+   "A": "BROCHETAS",
+   "B": 49,
+   "C": 1500
+ },
+ {
+   "A": "CARNE PICADA",
+   "B": 48,
+   "C": 13990
+ },
+ {
+   "A": "CAZUELA CORRIENTE CAT V NAC",
+   "B": 28,
+   "C": 0
+ },
+ {
+   "A": "CAZUELA ESPECIAL CAT V NAC",
+   "B": 27,
+   "C": 0
+ },
+ {
+   "A": "CHOCLILLO CAT V NAC",
+   "B": 23,
+   "C": 0
+ },
+ {
+   "A": "CHUNCHULES CAT V NAC",
+   "B": 39,
+   "C": 0
+ },
+ {
+   "A": "COLA CAT V NAC",
+   "B": 31,
+   "C": 0
+ },
+ {
+   "A": "COLUDA CAT V NAC",
+   "B": 30,
+   "C": 7990
+ },
+ {
+   "A": "CORAZON VACUNO CAT V NAC",
+   "B": 42,
+   "C": 0
+ },
+ {
+   "A": "ENTRAÑA CAT V NAC",
+   "B": 21,
+   "C": 0
+ },
+ {
+   "A": "ENTRECOT CAT V NAC",
+   "B": 24,
+   "C": 0
+ },
+ {
+   "A": "ESCALOPAS CAT V",
+   "B": 47,
+   "C": 13990
+ },
+ {
+   "A": "FILETE CAT V NAC",
+   "B": 1,
+   "C": 21990
+ },
+ {
+   "A": "FLAT IRON CAT V NAC",
+   "B": 45,
+   "C": 14990
+ },
+ {
+   "A": "GANSO CAT V NAC",
+   "B": 8,
+   "C": 12990
+ },
+ {
+   "A": "GUATITA CALLOS CAT V NAC",
+   "B": 37,
+   "C": 6000
+ },
+ {
+   "A": "GUATITA SURTIDA CAT V NAC",
+   "B": 38,
+   "C": 0
+ },
+ {
+   "A": "HIGADO VACUNO CAT V NAC",
+   "B": 41,
+   "C": 0
+ },
+ {
+   "A": "HUACHALOMO CAT V NAC",
+   "B": 15,
+   "C": 11990
+ },
+ {
+   "A": "HUESO BLANCO CAT V NAC",
+   "B": 32,
+   "C": 0
+ },
+ {
+   "A": "HUESO CARNUDO CAT V NAC",
+   "B": 33,
+   "C": 0
+ },
+ {
+   "A": "LOMO LISO CAT V NAC",
+   "B": 2,
+   "C": 18990
+ },
+ {
+   "A": "LOMO VETADO CAT V NAC",
+   "B": 3,
+   "C": 19990
+ },
+ {
+   "A": "MALAYA CAT V NAC",
+   "B": 36,
+   "C": 0
+ },
+ {
+   "A": "MOLIDA CORRIENTE CAT V NAC",
+   "B": 34,
+   "C": 6000
+ },
+ {
+   "A": "MOLIDA ESPECIAL CAT V NAC",
+   "B": 35,
+   "C": 12990
+ },
+ {
+   "A": "OSOBUCO CAT V NAC",
+   "B": 26,
+   "C": 8990
+ },
+ {
+   "A": "PALANCA CAT V NAC",
+   "B": 17,
+   "C": 12990
+ },
+ {
+   "A": "PALANQUETA CAT V NAC",
+   "B": 46,
+   "C": 0
+ },
+ {
+   "A": "PATA VACUNO CAT V NAC",
+   "B": 43,
+   "C": 3500
+ },
+ {
+   "A": "PLATEADA CAT V NAC",
+   "B": 19,
+   "C": 10990
+ },
+ {
+   "A": "POLLO BARRIGA CAT V NAC",
+   "B": 20,
+   "C": 0
+ },
+ {
+   "A": "POLLO GANSO CAT V NAC",
+   "B": 11,
+   "C": 13990
+ },
+ {
+   "A": "POSTA NEGRA CAT V NAC",
+   "B": 6,
+   "C": 12990
+ },
+ {
+   "A": "POSTA PALETA CAT V NAC",
+   "B": 7,
+   "C": 12990
+ },
+ {
+   "A": "POSTA ROSADA CAT V NAC",
+   "B": 5,
+   "C": 12990
+ },
+ {
+   "A": "PUNTA GANSO CAT V NAC",
+   "B": 10,
+   "C": 13990
+ },
+ {
+   "A": "PUNTA PALETA CAT V NAC",
+   "B": 9,
+   "C": 13990
+ },
+ {
+   "A": "PUNTA PICANA CAT V NAC",
+   "B": 22,
+   "C": 0
+ },
+ {
+   "A": "RIÑONES CAT V NAC",
+   "B": 40,
+   "C": 0
+ },
+ {
+   "A": "SOBRECOSTILLA CAT V NAC",
+   "B": 13,
+   "C": 0
+ },
+ {
+   "A": "TAPABARRIGA CAT V NAC",
+   "B": 12,
+   "C": 11990
+ },
+ {
+   "A": "TAPAPECHO CAT V NAC",
+   "B": 18,
+   "C": 10990
+ },
+ {
+   "A": "TOMAHAWK CAT V NAC",
+   "B": 44,
+   "C": 0
+ },
+ {
+   "A": "ALBONDIGA",
+   "B": null,
+   "C": 12990
+ },
+ {
+   "A": "TUBO CARNE QUESO",
+   "B": null,
+   "C": 12990
  }
 ]
