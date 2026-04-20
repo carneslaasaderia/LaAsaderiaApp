@@ -2,45 +2,126 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Buscador de Productos</title>
+  <title>La Asadería - Buscador</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <style>
-    body { font-family: Arial; padding: 20px; }
-    input { width: 100%; padding: 10px; font-size: 16px; }
-    .item { margin-top: 10px; padding: 10px; border: 1px solid #ccc; }
+    body {
+      font-family: Arial, sans-serif;
+      padding: 15px;
+      background: #f5f5f5;
+    }
+
+    h2 {
+      margin-bottom: 10px;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      font-size: 18px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    .item {
+      margin-top: 10px;
+      padding: 15px;
+      border-radius: 10px;
+      background: white;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .nombre {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .precio {
+      font-size: 20px;
+      color: green;
+      margin-top: 5px;
+    }
+
+    .codigo {
+      font-size: 14px;
+      color: #666;
+    }
   </style>
 </head>
+
 <body>
 
-<h2>Buscar producto</h2>
-<input type="text" id="search" placeholder="Ej: Abastero">
+<h2>🔎 Buscar producto</h2>
+<input type="text" id="search" placeholder="Ej: abastero, pollo, costilla..." autofocus>
 
 <div id="results"></div>
 
 <script>
 let productos = [];
 
-// Cargar JSON
-fetch('productos.json?v=' + new Date().getTime())
+// 🔄 Cargar JSON
+fetch('productos.json?v=' + Date.now())
   .then(res => res.json())
-  .then(data => productos = data);
+  .then(data => {
+    productos = data;
+    console.log("Productos cargados:", productos.length);
+  })
+  .catch(err => {
+    console.error("Error cargando JSON:", err);
+  });
 
-// Buscar en tiempo real
+// 💰 Formato CLP
+function formatoCLP(valor) {
+  return new Intl.NumberFormat('es-CL').format(valor);
+}
+
+// 🔎 Normalizar texto (sin tildes)
+function normalizar(texto) {
+  return texto
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
+}
+
+// 🔍 Buscar en tiempo real
 document.getElementById('search').addEventListener('input', function() {
-  let texto = this.value.toLowerCase();
-  let resultados = productos.filter(p =>
-    p.nombre.toLowerCase().includes(texto)
-  );
+
+  let texto = normalizar(this.value);
+
+  if (texto.length === 0) {
+    document.getElementById('results').innerHTML = "";
+    return;
+  }
+
+  let resultados = productos.filter(p => {
+    let nombre = normalizar(p.nombre || p.Nombre || "");
+    let codigo = (p.codigo || p.Codigo || "").toString();
+    return nombre.includes(texto) || codigo.includes(texto);
+  });
+
+  // Limitar resultados
+  resultados = resultados.slice(0, 15);
 
   let html = "";
-  resultados.slice(0, 10).forEach(p => {
+
+  resultados.forEach(p => {
+    let nombre = p.nombre || p.Nombre;
+    let codigo = p.codigo || p.Codigo;
+    let precio = p.precio || p.Precio;
+
     html += `
       <div class="item">
-        <strong>${p.nombre}</strong><br>
-        Código: ${p.codigo}<br>
-        Precio: $${p.precio}
+        <div class="nombre">${nombre}</div>
+        <div class="codigo">Código: ${codigo}</div>
+        <div class="precio">$${formatoCLP(precio)}</div>
       </div>
     `;
   });
+
+  if (html === "") {
+    html = "<p>No se encontraron resultados</p>";
+  }
 
   document.getElementById('results').innerHTML = html;
 });
