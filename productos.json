@@ -208,7 +208,7 @@
   { "nombre": "TWISTOS", "codigo": "NoCod", "precio": 1900 },
   { "nombre": "TORT TIA ROSA GRANDOTA 8U", "codigo": 413, "precio": 3590 },
   { "nombre": "VINAGRE VARIEDADES 250", "codigo": 698, "precio": 900 },
-  { "nombre": "DETODITO DULCE", "codigo": , "precio": 0 },
+  { "nombre": "DETODITO DULCE", "codigo": "NoCod", "precio": 0 },
   { "nombre": "ROLLO", "codigo": 419, "precio": 800 },
   { "nombre": "CALDO MAGGI", "codigo": 420, "precio": 210 },
   { "nombre": "BOM BOM", "codigo": 421, "precio": 0 },
