@@ -1,0 +1,22 @@
+[
+ {
+   "A": "NOMBRE",
+   "B": "CODIGO",
+   "C": "PRECIO"
+ },
+ {
+   "A": "ASIENTO",
+   "B": "4",
+   "C": "15990"
+ },
+ {
+   "A": "MOLIDA CORRIENTE",
+   "B": "34",
+   "C": "8990"
+ },
+ {
+   "A": "MOLIDA ESPECIAL",
+   "B": "35",
+   "C": "13990"
+ }
+]

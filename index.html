@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Buscador de Productos</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    input { width: 100%; padding: 10px; font-size: 16px; }
+    .item { margin-top: 10px; padding: 10px; border: 1px solid #ccc; }
+  </style>
+</head>
+<body>
+
+<h2>Buscar producto</h2>
+<input type="text" id="search" placeholder="Ej: Abastero">
+
+<div id="results"></div>
+
+<script>
+let productos = [];
+
+// Cargar JSON
+fetch('productos.json')
+  .then(res => res.json())
+  .then(data => productos = data);
+
+// Buscar en tiempo real
+document.getElementById('search').addEventListener('input', function() {
+  let texto = this.value.toLowerCase();
+  let resultados = productos.filter(p =>
+    p.nombre.toLowerCase().includes(texto)
+  );
+
+  let html = "";
+  resultados.slice(0, 10).forEach(p => {
+    html += `
+      <div class="item">
+        <strong>${p.nombre}</strong><br>
+        Código: ${p.codigo}<br>
+        Precio: $${p.precio}
+      </div>
+    `;
+  });
+
+  document.getElementById('results').innerHTML = html;
+});
+</script>
+
+</body>
+</html>
