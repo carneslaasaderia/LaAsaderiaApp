@@ -12,17 +12,12 @@
       background: #f5f5f5;
     }
 
-    h2 {
-      margin-bottom: 10px;
-    }
-
     input {
       width: 100%;
       padding: 14px;
       font-size: 18px;
-      border: 1px solid #ccc;
       border-radius: 8px;
-      margin-bottom: 10px;
+      border: 1px solid #ccc;
     }
 
     .item {
@@ -30,101 +25,84 @@
       padding: 15px;
       border-radius: 10px;
       background: white;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
 
-    .nombre {
-      font-size: 18px;
-      font-weight: bold;
-    }
-
-    .precio {
-      font-size: 20px;
-      color: green;
-      margin-top: 5px;
-    }
-
-    .codigo {
-      font-size: 14px;
-      color: #666;
-    }
+    .nombre { font-weight: bold; }
+    .precio { color: green; font-size: 18px; }
+    .codigo { color: gray; font-size: 14px; }
   </style>
 </head>
 
 <body>
 
-<h2>🔎 Buscar producto</h2>
-<input type="text" id="search" placeholder="Ej: abastero, molida, 34..." autofocus>
+<h2>Buscar producto</h2>
+<input type="text" id="search" placeholder="Ej: molida, asiento, 34">
 
 <div id="results"></div>
 
 <script>
 let productos = [];
 
-// 🔄 Cargar JSON
+// Cargar JSON
 fetch('productos.json?v=' + Date.now())
   .then(res => res.json())
   .then(data => {
     productos = data;
-    console.log("Productos cargados:", productos.length);
+    console.log("OK JSON:", productos);
   })
-  .catch(err => {
-    console.error("Error cargando JSON:", err);
-  });
+  .catch(err => console.error("ERROR JSON:", err));
 
-// 💰 Formato CLP
+// Formato CLP
 function formatoCLP(valor) {
   return new Intl.NumberFormat('es-CL').format(valor);
 }
 
-// 🔎 Normalizar texto (sin tildes)
+// Normalizar texto
 function normalizar(texto) {
   return texto
+    .toString()
     .toLowerCase()
     .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "");
+    .replace(/[\u0300-\u036f]/g, "")
+    .trim();
 }
 
-// 🔍 Buscar en tiempo real
+// Evento búsqueda
 document.getElementById('search').addEventListener('input', function() {
 
   let texto = normalizar(this.value);
 
-  if (texto.length === 0) {
+  // 🔴 IMPORTANTE: si no hay texto, no mostrar nada
+  if (!texto) {
     document.getElementById('results').innerHTML = "";
     return;
   }
 
   let resultados = productos
-    .slice(1) // 👈 saltar encabezado del Excel
+    .slice(1) // quitar encabezado
     .filter(p => {
-      let nombre = normalizar(p.A || "");
-      let codigo = (p.B || "").toString();
+      let nombre = normalizar(p.A);
+      let codigo = normalizar(p.B);
+
       return nombre.includes(texto) || codigo.includes(texto);
-    })
-    .slice(0, 15); // limitar resultados
+    });
+
+  console.log("RESULTADOS:", resultados);
 
   let html = "";
 
   resultados.forEach(p => {
-    let nombre = p.A;
-    let codigo = p.B;
-    let precio = Number(p.C);
-
     html += `
       <div class="item">
-        <div class="nombre">${nombre}</div>
-        <div class="codigo">Código: ${codigo}</div>
-        <div class="precio">$${formatoCLP(precio)}</div>
+        <div class="nombre">${p.A}</div>
+        <div class="codigo">Código: ${p.B}</div>
+        <div class="precio">$${formatoCLP(Number(p.C))}</div>
       </div>
     `;
   });
 
-  if (html === "") {
-    html = "<p>No se encontraron resultados</p>";
-  }
-
-  document.getElementById('results').innerHTML = html;
+  document.getElementById('results').innerHTML =
+    html || "<p>No se encontraron resultados</p>";
 });
 </script>
 
