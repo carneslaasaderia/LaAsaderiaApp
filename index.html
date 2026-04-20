@@ -22,6 +22,7 @@
       font-size: 18px;
       border: 1px solid #ccc;
       border-radius: 8px;
+      margin-bottom: 10px;
     }
 
     .item {
@@ -53,7 +54,7 @@
 <body>
 
 <h2>🔎 Buscar producto</h2>
-<input type="text" id="search" placeholder="Ej: abastero, pollo, costilla..." autofocus>
+<input type="text" id="search" placeholder="Ej: abastero, molida, 34..." autofocus>
 
 <div id="results"></div>
 
@@ -94,21 +95,21 @@ document.getElementById('search').addEventListener('input', function() {
     return;
   }
 
-  let resultados = productos.filter(p => {
-    let nombre = normalizar(p.nombre || p.Nombre || "");
-    let codigo = (p.codigo || p.Codigo || "").toString();
-    return nombre.includes(texto) || codigo.includes(texto);
-  });
-
-  // Limitar resultados
-  resultados = resultados.slice(0, 15);
+  let resultados = productos
+    .slice(1) // 👈 saltar encabezado del Excel
+    .filter(p => {
+      let nombre = normalizar(p.A || "");
+      let codigo = (p.B || "").toString();
+      return nombre.includes(texto) || codigo.includes(texto);
+    })
+    .slice(0, 15); // limitar resultados
 
   let html = "";
 
   resultados.forEach(p => {
-    let nombre = p.nombre || p.Nombre;
-    let codigo = p.codigo || p.Codigo;
-    let precio = p.precio || p.Precio;
+    let nombre = p.A;
+    let codigo = p.B;
+    let precio = Number(p.C);
 
     html += `
       <div class="item">
