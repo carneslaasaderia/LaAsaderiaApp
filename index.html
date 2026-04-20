@@ -20,7 +20,7 @@
 let productos = [];
 
 // Cargar JSON
-fetch('productos.json')
+fetch('productos.json?v=' + new Date().getTime())
   .then(res => res.json())
   .then(data => productos = data);
 
