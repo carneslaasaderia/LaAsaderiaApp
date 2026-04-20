@@ -37,18 +37,17 @@
 
     .item:active {
       transform: scale(0.98);
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
 
     .nombre {
       font-size: 18px;
       font-weight: bold;
-      margin-bottom: 6px;
     }
 
     .codigo {
       font-size: 13px;
       color: #888;
+      margin-top: 4px;
     }
 
     .precio {
@@ -76,22 +75,31 @@
 <script>
 let productos = [];
 
+// 🔄 Cargar JSON (anti-cache)
 fetch('productos.json?v=' + Date.now())
   .then(res => res.json())
-  .then(data => productos = data);
+  .then(data => {
+    productos = data;
+    console.log("Productos cargados:", productos.length);
+  })
+  .catch(err => console.error("Error cargando JSON:", err));
 
-function formatoCLP(v) {
-  return new Intl.NumberFormat('es-CL').format(v);
+// 💰 Formato CLP
+function formatoCLP(valor) {
+  return new Intl.NumberFormat('es-CL').format(valor);
 }
 
-function normalizar(t) {
-  return (t || "")
+// 🔎 Normalizar texto
+function normalizar(texto) {
+  return (texto || "")
+    .toString()
     .toLowerCase()
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
     .trim();
 }
 
+// 🔍 Buscar en tiempo real
 document.getElementById('search').addEventListener('input', function() {
 
   let texto = normalizar(this.value);
@@ -102,19 +110,18 @@ document.getElementById('search').addEventListener('input', function() {
   }
 
   let resultados = productos
-    .slice(1)
     .filter(p => {
-      let nombre = normalizar(p.A);
-      let codigo = normalizar(p.B);
+      let nombre = normalizar(p.nombre);
+      let codigo = (p.codigo ?? "").toString();
       return nombre.includes(texto) || codigo.includes(texto);
     })
     .slice(0, 15);
 
   results.innerHTML = resultados.map(p => `
     <div class="item">
-      <div class="nombre">${p.A}</div>
-      <div class="codigo">Código: ${p.B}</div>
-      <div class="precio">$${formatoCLP(Number(p.C))}</div>
+      <div class="nombre">${p.nombre}</div>
+      <div class="codigo">Código: ${p.codigo ?? "-"}</div>
+      <div class="precio">$${formatoCLP(p.precio)}</div>
     </div>
   `).join("") || `<div class="empty">No se encontraron resultados</div>`;
 });
