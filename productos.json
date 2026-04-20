@@ -420,7 +420,7 @@
   { "nombre": "PECHUGA ACARAMELADA DE PAVO SOPRAVAL", "codigo": 833, "precio": 0 },
   { "nombre": "PECHUGA ASADA DE PAVO SOPRAVAL", "codigo": 834, "precio": 0 },
   { "nombre": "PECHUGA COCIDA DE PAVO SOPRAVAL", "codigo": 835, "precio": 0 },
-  { "nombre": "PEPINILLOS", "codigo": 836, "precio": 7820, },
+  { "nombre": "PEPINILLOS", "codigo": 836, "precio": 7820 },
   { "nombre": "PICHANGA", "codigo": 837, "precio": 0 },
   { "nombre": "PICKLES", "codigo": 861, "precio": 4760 },
   { "nombre": "QUESO CHANCO FRUTILLAR", "codigo": 840, "precio": 0 },
@@ -442,7 +442,7 @@
   { "nombre": "YOGURTH SOPROLE VARIEDADES", "codigo": 854, "precio": 0 },
   { "nombre": "QUESO DE CABEZA", "codigo": 838, "precio": 0 },
   { "nombre": "PRIETA LLANQUIHUE", "codigo": 841, "precio": 0 },
-  { "nombre": "PRIETA ACONF", "codigo": 844, "precio": 8817,9 },
+  { "nombre": "PRIETA ACONF", "codigo": 844, "precio": 8820 },
   { "nombre": "QUESO CREMA", "codigo": 447, "precio": 0 },
-  { "nombre": "LECHE ZEROLACTO 1  LITRO", "codigo": "NoCod", "precio": 1768 }
+  { "nombre": "LECHE ZEROLACTO 1  LITRO", "codigo": "NoCod", "precio": 1770 }
 ]
